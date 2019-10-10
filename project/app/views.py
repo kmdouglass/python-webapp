@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.views.generic import TemplateView
 
-def foo(request):
-    return HttpResponse('Hello, world!')
+class Foo(TemplateView):
+    template_name = 'index.html'
