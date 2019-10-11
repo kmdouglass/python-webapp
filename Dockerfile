@@ -10,5 +10,3 @@ ADD requirements.txt /opt/services/webapp/requirements.txt
 RUN pip install --no-cache-dir -r /opt/services/webapp/requirements.txt
 
 CMD ["gunicorn", "--chdir", "/opt/services/webapp/src", "--bind", ":8000", "project.wsgi:application"]
-
-

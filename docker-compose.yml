@@ -7,5 +7,22 @@ services:
       - type: bind
         source: ./project
         target: /opt/services/webapp/src
+    networks:
+      - nginx_network
+
+  nginx:
+    image: nginx:1.17.4
+    volumes:
+      - type: bind
+        source: ./config/nginx/conf.d
+        target: /etc/nginx/conf.d
     ports:
-      - 8000:8000
+      - 8000:80
+    depends_on:
+      - webapp
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
