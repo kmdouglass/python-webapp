@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  webapp:
+    build: .
+    volumes:
+      - type: bind
+        source: ./project
+        target: /opt/services/webapp/src
+    ports:
+      - 8000:8000
