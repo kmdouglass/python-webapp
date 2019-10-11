@@ -7,6 +7,12 @@ services:
       - type: bind
         source: ./project
         target: /opt/services/webapp/src
+      - type: volume
+        source: static_volume
+        target: /opt/services/webapp/static
+      - type: volume
+        source: media_volume
+        target: /opt/services/webapp/media
     networks:
       - nginx_network
       - database1_network
@@ -19,6 +25,12 @@ services:
       - type: bind
         source: ./config/nginx/conf.d
         target: /etc/nginx/conf.d
+      - type: volume
+        source: static_volume
+        target: /opt/services/webapp/static
+      - type: volume
+        source: media_volume
+        target: /opt/services/webapp/media
     ports:
       - 8000:80
     depends_on:
@@ -45,3 +57,5 @@ networks:
 
 volumes:
   app_data:
+  static_volume:
+  media_volume:
